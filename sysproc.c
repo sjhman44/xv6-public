@@ -96,10 +96,10 @@ sys_wcupa(void)
 	return 1871;
 }
 
-int sys_readcounter;
+int sys_wcupacounter;
 
 int
-sys_readcount(void)
-{	//add value here
-	return sys_readcounter;
+sys_wcupacount(void)
+{	
+	return sys_wcupacounter;
 }

@@ -3,6 +3,6 @@
 #include "user.h"
 
 int main (void){
-	printf(1,"Current Read Count: %d\n",readcount());
+	printf(1,"Current WCUPA Count: %d\n",wcupacount());
 	exit();
 }

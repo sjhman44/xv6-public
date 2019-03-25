@@ -104,8 +104,8 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_wcupa(void);
-extern int sys_readcount(void);
-extern int sys_readcounter;
+extern int sys_wcupacount(void);
+extern int sys_wcupacounter;
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -130,7 +130,7 @@ static int (*syscalls[])(void) = {
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
 [SYS_wcupa]   sys_wcupa,
-[SYS_readcount] sys_readcount,
+[SYS_wcupacount] sys_wcupacount,
 };
 
 void
@@ -140,8 +140,8 @@ syscall(void)
   struct proc *curproc = myproc();
 
   num = curproc->tf->eax;
-	//5 is read() system call in syscall.h
-  if(num == 5) sys_readcounter++;
+	//5 is wcupa() system call in syscall.h
+  if(num == 22) sys_wcupacounter++;
 
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     curproc->tf->eax = syscalls[num]();
